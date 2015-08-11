@@ -12,5 +12,10 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap/js/bootstrap
+//= require jquery.easing.1.3.min
+//= require jquery.sticky
+//= require jquery.flexslider-min
+//= require jquery.stellar.min
 // require turbolinks
 //= require_tree .
