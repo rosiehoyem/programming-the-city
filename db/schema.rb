@@ -11,14 +11,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150907234029) do
+ActiveRecord::Schema.define(version: 20150913000416) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "companies", force: :cascade do |t|
+    t.string   "name"
+    t.text     "description"
+    t.string   "location"
+    t.string   "website_url"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
   create_table "concepts", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
+  end
+
+  create_table "initiatives", force: :cascade do |t|
+    t.string   "name"
+    t.string   "organizer"
+    t.string   "website_url"
+    t.text     "description"
+    t.string   "location"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -31,6 +50,20 @@ ActiveRecord::Schema.define(version: 20150907234029) do
     t.integer  "author_id"
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
+  end
+
+  create_table "notes", force: :cascade do |t|
+    t.text     "text"
+    t.string   "image"
+    t.string   "parent_id"
+    t.string   "parent_type"
+    t.integer  "initiative_id"
+    t.integer  "person_id"
+    t.integer  "medium_id"
+    t.integer  "concept_id"
+    t.integer  "company_id"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
   end
 
   create_table "people", force: :cascade do |t|
