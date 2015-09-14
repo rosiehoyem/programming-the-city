@@ -10,11 +10,13 @@ class ConceptsController < ApplicationController
   # GET /concepts/1
   # GET /concepts/1.json
   def show
+    @note = Note.new
   end
 
   # GET /concepts/new
   def new
     @concept = Concept.new
+    @note = Note.new
   end
 
   # GET /concepts/1/edit
@@ -62,13 +64,17 @@ class ConceptsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_concept
-      @concept = Concept.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_concept
+    @concept = Concept.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def concept_params
-      params.require(:concept).permit(:name, :description)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def concept_params
+    params.require(:concept).permit(:name, :description, notes_attributes: [:text, :image, :parent_id, :parent_type])
+  end
+
+  def note_params
+    params.require(:note).permit(:text, :image, :parent_id, :parent_type)
+  end
 end

@@ -10,6 +10,7 @@ class MediaController < ApplicationController
   # GET /media/1
   # GET /media/1.json
   def show
+    @note = Note.new
   end
 
   # GET /media/new
@@ -62,13 +63,17 @@ class MediaController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_medium
-      @medium = Medium.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_medium
+    @medium = Medium.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def medium_params
-      params.require(:medium).permit(:name, :type, :url, :description, :author_id)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def medium_params
+    params.require(:medium).permit(:name, :type, :url, :description, :author_id, notes_attributes: [:text, :image, :parent_id, :parent_type])
+  end
+
+  def note_params
+    params.require(:note).permit(:text, :image, :parent_id, :parent_type)
+  end
 end

@@ -10,6 +10,7 @@ class InitiativesController < ApplicationController
   # GET /initiatives/1
   # GET /initiatives/1.json
   def show
+    @note = Note.new
   end
 
   # GET /initiatives/new
@@ -62,13 +63,17 @@ class InitiativesController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_initiative
-      @initiative = Initiative.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_initiative
+    @initiative = Initiative.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def initiative_params
-      params.require(:initiative).permit(:name, :organizer, :description, :location)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def initiative_params
+    params.require(:initiative).permit(:name, :organizer, :description, :location, notes_attributes: [:text, :image, :parent_id, :parent_type])
+  end
+
+  def note_params
+    params.require(:note).permit(:text, :image, :parent_id, :parent_type)
+  end
 end

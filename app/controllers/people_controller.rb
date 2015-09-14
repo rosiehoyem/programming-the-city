@@ -10,6 +10,7 @@ class PeopleController < ApplicationController
   # GET /people/1
   # GET /people/1.json
   def show
+    @note = Note.new
   end
 
   # GET /people/new
@@ -62,13 +63,17 @@ class PeopleController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_person
-      @person = Person.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_person
+    @person = Person.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def person_params
-      params.require(:person).permit(:first_name, :last_name, :website_url, :image_url, :description)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def person_params
+    params.require(:person).permit(:first_name, :last_name, :website_url, :image_url, :description, notes_attributes: [:text, :image, :parent_id, :parent_type])
+  end
+
+  def note_params
+    params.require(:note).permit(:text, :image, :parent_id, :parent_type)
+  end
 end
