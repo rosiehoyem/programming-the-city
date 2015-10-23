@@ -10,6 +10,7 @@ class ConceptsController < ApplicationController
   # GET /concepts/1
   # GET /concepts/1.json
   def show
+    @notes = Note
     @note = Note.new
   end
 

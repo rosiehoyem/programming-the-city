@@ -8,8 +8,6 @@
 * [Development Setup](#development-setup)
 * [Production Setup](#production-setup)
 * [Deployment](#deployment)
-* Additional Documentation
-    * [Config Vars](https://github.com/livefront/whos-driving-server/blob/master/doc/config_vars.md)
 * [Code Style Guide](#code-style-guide)
 ## Overview
 
@@ -24,7 +22,7 @@ The app is hosted on Heroku.
 
 ## Dependencies
 
-* [See the Gemfile](https://github.com/livefront/whos-driving-server/blob/master/Gemfile)
+* [See the Gemfile](https://github.com/todo/blob/master/Gemfile)
 * Ruby 2.2.2
 * Rails 4.2.1
 * PostgreSQL
@@ -47,8 +45,8 @@ The app is hosted on Heroku.
 
 1. Clone the repo:
 
-        $ git clone git@github.com:livefront/whos-driving-server.git
-        $ cd whos-driving-server
+        $ git clone git@github.com:todo.git
+        $ cd todo
         $ git checkout -t origin/stable
         $ git checkout master
 
