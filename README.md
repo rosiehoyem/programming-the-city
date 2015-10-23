@@ -54,7 +54,7 @@ The app is hosted on Heroku.
 
 3. Add Heroku remote:
 
-        $ git remote add staging git@heroku.com:whos-driving-staging.git
+        $ git remote add staging git@heroku.com:todo-staging.git
 
 4. Set the default remote for Heroku to `staging`:
 
@@ -82,17 +82,17 @@ The app is hosted on Heroku.
 
 ### Configure Heroku
 
-Repeat these instructions for `whos-driving-staging` and `whos-driving-production`.
+Repeat these instructions for `todo-staging` and `todo-production`.
 
 1. Follow the steps listed in [Development Setup](#development-setup).
 2. Create the Heroku app:
 
-        $ heroku create whos-driving-staging
+        $ heroku create todo-staging
 
 3. Add Heroku add-ons.
 
-        $ heroku addons:add pgbackups:auto-month --app whos-driving-staging
-        $ heroku addons:add heroku-postgresql:dev --app whos-driving-staging
+        $ heroku addons:add pgbackups:auto-month --app todo-staging
+        $ heroku addons:add heroku-postgresql:dev --app todo-staging
 
 4. Add deploy hooks to send deploy notifications.
 
@@ -103,7 +103,7 @@ Repeat these instructions for `whos-driving-staging` and `whos-driving-productio
 
 ### Staging
 
-**Note: the following commands assume you've set `whos-driving-staging` as your default Heroku app via the following command: `git config heroku.remote staging`.**
+**Note: the following commands assume you've set `todo-staging` as your default Heroku app via the following command: `git config heroku.remote staging`.**
 
     $ heroku maintenance:on
     $ git push staging stable:master
@@ -124,10 +124,10 @@ Repeat these instructions for `whos-driving-staging` and `whos-driving-productio
         $ git commit -m "Booyah"
         $ git push
 
-4. Deploy to `whos-driving-production`:
+4. Deploy to `todo-production`:
 
-        $ heroku maintenance:on --app whos-driving-production
+        $ heroku maintenance:on --app todo-production
         $ git push production stable:master
-        $ heroku run rake db:migrate --app whos-driving-production
-        $ heroku ps:restart --app whos-driving-production
-        $ heroku maintenance:off --app whos-driving-production
+        $ heroku run rake db:migrate --app todo-production
+        $ heroku ps:restart --app todo-production
+        $ heroku maintenance:off --app todo-production
